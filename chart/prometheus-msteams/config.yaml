@@ -1,0 +1,18 @@
+---
+replicaCount: 1
+image:
+  repository: quay.io/prometheusmsteams/prometheus-msteams
+  tag: v1.5.0
+
+connectors:
+# in alertmanager, this will be used as http://prometheus-msteams:2000/bar
+   - teams: ""
+# # in alertmanager, this will be used as http://prometheus-msteams:2000/foo
+# - foo: https://outlook.office.com/webhook/xxxx/xxxx
+
+metrics:
+  serviceMonitor:
+    enabled: true
+    additionalLabels:
+      release: prometheus # change this accordingly
+    scrapeInterval: 30s
